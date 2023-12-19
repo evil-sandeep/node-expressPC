@@ -89,7 +89,7 @@
 
 //----------------------------------------------------------------------------------------------------------
 
-// Create a simple Express.js server with a single API endpoint that returns a list of books. Assume the list of books is an array of objects, each containing a title and an author. The endpoint should be accessible at http://localhost:3001/books.
+// Create a simple Express.js server with a" single API endpoint that returns a list of books. "Assume the list of books is an array of objects, each containing a title and an author. The endpoint should be accessible at http://localhost:3001/books.
 
 // const express = require('express')
 // const app = express()
@@ -114,6 +114,41 @@
 //     res.json(book)
 // })
 
+// app.listen(port, () => {
+// console.log(`Server is running on http://localhost:${port}`);
+// });
+
+//--------------------------------------------------------------------------------------
+// Question 4: MongoDB and Mongoose
+
+// Assuming you have MongoDB installed locally and the Mongoose npm package installed in your project, your task is to create a simple Mongoose model for a "Task" with fields title and description. Then, create a route in your Express.js application that fetches all tasks from the MongoDB database and returns them as JSON.
+
+// const express = require('express')
+// const mongoose = require('mongoose')
+
+// const app = express();
+// const port = 3001;
+
+// mongoose.connect('mongodb://localhost:27017/task_db', { useNewUrlParser: true })
+// const db = mongoose.connection;
+// // console.log(db)
+
+// const taskSchema = new mongoose.Schema({
+//     title: String, 
+//     description: String
+// })
+
+// const Task = mongoose.model('Task', taskSchema)
+
+// app.get('/tasks', async (req, res) => {
+//     try {
+//         const tasks = await Task.find()
+//         res.json(tasks)
+//     } catch (error) {
+//         console.error('Error fetching tasks:', error);
+//         res.status(500).send('Internal server error')
+//     }
+// })
 // app.listen(port, () => {
 //     console.log(`Server is running on http://localhost:${port}`);
 // });
