@@ -1,6 +1,7 @@
 // Question: Create a Basic API with Express
 const express = require('express');
 const bodyParser = require('body-parser');
+const nodemon=require('nodemon')
 
 const app = express();
 const port = 3000;
@@ -18,9 +19,29 @@ const books = [
 ];
 
 // Define your routes here
-app.get('/books',(req,res)=>{
+app.get('/api/books',(req,res)=>{
+res.send('List Of Products '+JSON.stringify(books))
+})
 
-    
+app.get('/api/books/:id',(req,res)=>{
+    //it access url books id 
+    const bookid=parseInt(req.params.id)
+//and here we use of this id find in books
+    const book=books.find(b=> b.id===bookid);
+
+    if(!books){
+        res.status(404).send("Not Found")
+        return
+    }
+    res.send('Product Details'+ JSON.stringify(book))
+
+})
+
+app.post('/api/books',(req,res)=>{
+    const newBook=req.body;
+    newBook.id=books.length+1
+    books.push(newBook)
+    res.status(201).json(newBook);
 })
 
 app.listen(port, () => {
