@@ -152,3 +152,106 @@
 // app.listen(port, () => {
 //     console.log(`Server is running on http://localhost:${port}`);
 // });
+
+//-=========================================================================================================================================
+// Q.Express.js and MongoDB CRUD Operations
+
+// Create an Express.js application that performs CRUD (Create, Read, Update, Delete) operations on a simple entity, let's say "Task". Define routes for the following operations:
+// const express = require('express')
+// const mongoose = require('mongoose')
+// const bodyParser = require('body-parser')
+
+// const app = express()
+// app.use(bodyParser.json());
+
+// mongoose.connect('mongodb://localhost:27017/task_db',  { useNewUrlParser: true, useUnifiedTopology: true })
+// const db = mongoose.connection
+// db.on('error', () => {
+//     console.log('Mongodb connect error')
+// })
+// db.once('open', () => {
+//     console.log("mongodb success connect")
+// })
+
+// const taskSchema = mongoose.Schema({
+//     title: String,
+//     description: String
+// })
+
+// const Task = mongoose.model('Task', taskSchema)
+
+
+
+// // Create a Task
+// app.post('/tasks', async (req, res) => {
+//     try {
+//         const newTask = new Task(req.body)
+//         await newTask.save()
+//         res.status(201).send('Data save success' + newTask)
+//     } catch (err) {
+//         // throw new Error(err.message)
+//         res.status(500).json({ err: 'Internal server error' })
+//     }
+// })
+
+// //Read Task
+// app.get('/tasks', async (req, res) => {
+//     try {
+//         const tasks = await Task.find();
+//         res.json(tasks)
+//     } catch (error) {
+//         res.status(500).send({ error: 'Internal server error' })
+//     }
+// });
+
+// // Read a Task by ID
+// app.get('/tasks/:id', async (req, res) => {
+//     try {
+//         const taskId = req.params.id
+//         const task = await Task.findById(taskId)
+//         if (!task) {
+//             res.status(404).json({ error: "Task Not found" })
+//             return
+//         }
+//         res.json(task)
+//     } catch (error) {
+//         res.status(500).send({ error: 'Server error' })
+//     }
+// });
+
+
+
+// // Update a Task by ID
+
+// app.put('/tasks/:id', async (req, res) => {
+//     try {
+//         const updateTask =await Task. findByIdAndUpdate(req.params.id, req.body, { new: true })
+
+//         if (!updateTask) {
+//             res.status(404).json({ error: "Task Not found" })
+//             return
+//         }
+//         res.json(updateTask)
+//     } catch (error) {
+//         res.status(500).send({ error: 'Server error' })
+//     }
+// });
+
+// //Delete a task by id
+// app.delete('/tasks/:id', async (req, res) => {
+//     try {
+//         const deleteTask = await Task.findByIdAndDelete(req.params.id)
+       
+//         if (!deleteTask) {
+//             res.status(404).json({ error: "Task Not found" })
+//             return
+//         }
+// res.json(deleteTask)
+//     } catch (error) {
+//         res.status(500).send({ error: 'Server error' })
+//     }
+// });
+
+// app.listen(3005,()=>{
+//     console.log("app run ")
+// })
